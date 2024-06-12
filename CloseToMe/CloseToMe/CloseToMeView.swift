@@ -14,16 +14,25 @@ struct CloseToMeView: View {
     @State private var selectedDetent: PresentationDetent = .fraction(0.15)
     
     var body: some View {
-        Map()
-            .sheet(isPresented: .constant(true), content: {
-                VStack {
-                    TextField("Search", text: $query)
-                }
-                    .presentationDetents([.fraction(0.15), .medium, .large], selection: $selectedDetent)
-                    .presentationDragIndicator(.visible)
-                    .interactiveDismissDisabled()
-                    .presentationBackgroundInteraction(.enabled(upThrough: .medium))
-            })
+        ZStack {
+            Map()
+                .sheet(isPresented: .constant(true), content: {
+                    VStack {
+                        TextField("Search", text: $query)
+                            .textFieldStyle(.roundedBorder)
+                            .padding()
+                            .onSubmit {
+                                // code fired when you tap return in TextField
+                            }
+                        Spacer()
+                    }
+                        .presentationDetents([.fraction(0.15), .medium, .large], selection: $selectedDetent)
+                        .presentationDragIndicator(.visible)
+                        .interactiveDismissDisabled()
+                        .presentationBackgroundInteraction(.enabled(upThrough: .medium))
+                })
+
+        }
     }
 }
 
