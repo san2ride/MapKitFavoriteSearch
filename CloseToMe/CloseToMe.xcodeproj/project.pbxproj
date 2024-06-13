@@ -10,6 +10,7 @@
 		F70750672C1B7431008664B8 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F70750662C1B7431008664B8 /* LocationManager.swift */; };
 		F707506B2C1B8452008664B8 /* MKCoordinateRegion+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F707506A2C1B8452008664B8 /* MKCoordinateRegion+Ext.swift */; };
 		F707506E2C1BA7E8008664B8 /* MapUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = F707506D2C1BA7E8008664B8 /* MapUtilities.swift */; };
+		F70750712C1BAF29008664B8 /* PlaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F70750702C1BAF29008664B8 /* PlaceView.swift */; };
 		F760F23F2C1A30860068E6EA /* CloseToMeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F760F23E2C1A30860068E6EA /* CloseToMeApp.swift */; };
 		F760F2432C1A30880068E6EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F760F2422C1A30880068E6EA /* Assets.xcassets */; };
 		F760F2462C1A30880068E6EA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F760F2452C1A30880068E6EA /* Preview Assets.xcassets */; };
@@ -20,6 +21,7 @@
 		F70750662C1B7431008664B8 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		F707506A2C1B8452008664B8 /* MKCoordinateRegion+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKCoordinateRegion+Ext.swift"; sourceTree = "<group>"; };
 		F707506D2C1BA7E8008664B8 /* MapUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapUtilities.swift; sourceTree = "<group>"; };
+		F70750702C1BAF29008664B8 /* PlaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceView.swift; sourceTree = "<group>"; };
 		F760F23B2C1A30860068E6EA /* CloseToMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CloseToMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F760F23E2C1A30860068E6EA /* CloseToMeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseToMeApp.swift; sourceTree = "<group>"; };
 		F760F2422C1A30880068E6EA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -62,6 +64,14 @@
 			path = Utilitys;
 			sourceTree = "<group>";
 		};
+		F707506F2C1BAF15008664B8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F70750702C1BAF29008664B8 /* PlaceView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		F760F2322C1A30860068E6EA = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +91,7 @@
 		F760F23D2C1A30860068E6EA /* CloseToMe */ = {
 			isa = PBXGroup;
 			children = (
+				F707506F2C1BAF15008664B8 /* Views */,
 				F707506C2C1BA7CA008664B8 /* Utilitys */,
 				F70750692C1B8430008664B8 /* Extensions */,
 				F70750682C1B7437008664B8 /* Managers */,
@@ -170,6 +181,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F70750712C1BAF29008664B8 /* PlaceView.swift in Sources */,
 				F760F24D2C1A50A80068E6EA /* CloseToMeView.swift in Sources */,
 				F760F23F2C1A30860068E6EA /* CloseToMeApp.swift in Sources */,
 				F70750672C1B7431008664B8 /* LocationManager.swift in Sources */,

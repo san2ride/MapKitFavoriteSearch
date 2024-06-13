@@ -10,17 +10,18 @@ import MapKit
 
 struct CloseToMeView: View {
     
-    @State private var query: String = ""
+    @State private var query: String = "Strip club"
     @State private var selectedDetent: PresentationDetent = .fraction(0.15)
     @State private var locationManager = LocationManager.shared
     @State private var position: MapCameraPosition = .userLocation(fallback: .automatic)
     @State private var isSearching: Bool = false
     @State private var mapItems: [MKMapItem] = []
+    @State private var visibleRegion: MKCoordinateRegion?
     
     private func search() async {
         do {
             mapItems = try await performSearch(searchTerm: query,
-                                               visibleRegion: locationManager.region)
+                                               visibleRegion: visibleRegion)
             print(mapItems)
             isSearching = false
         } catch {
@@ -49,6 +50,9 @@ struct CloseToMeView: View {
                         .onSubmit {
                            isSearching = true
                         }
+                    List(mapItems, id: \.self) { mapItem in
+                        PlaceView(mapItem: mapItem)
+                    }
                     Spacer()
                 }
                 .presentationDetents([.fraction(0.15), .medium, .large], selection: $selectedDetent)
@@ -56,6 +60,9 @@ struct CloseToMeView: View {
                 .interactiveDismissDisabled()
                 .presentationBackgroundInteraction(.enabled(upThrough: .medium))
             })
+        }
+        .onMapCameraChange { context in
+            visibleRegion = context.region
         }
         .task(id: isSearching, {
             if isSearching {
