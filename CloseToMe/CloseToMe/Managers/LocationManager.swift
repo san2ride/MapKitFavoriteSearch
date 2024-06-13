@@ -9,10 +9,37 @@ import UIKit
 import MapKit
 import Observation
 
+enum LocationError: LocalizedError {
+    case authorizationDenied
+    case authorizationRestricted
+    case unknownLocation
+    case accessDenied
+    case network
+    case operationFailed
+    
+    var errorDescription: String? {
+        switch self {
+            case .authorizationDenied:
+                return NSLocalizedString("Location access denied.", comment: "")
+            case .authorizationRestricted:
+                return NSLocalizedString("Location access restricted", comment: "")
+            case .unknownLocation:
+                return NSLocalizedString("Unknown location", comment: "")
+            case .accessDenied:
+                return NSLocalizedString("Access denied", comment: "")
+            case .network:
+                return NSLocalizedString("Network failed", comment: "")
+            case .operationFailed:
+                return NSLocalizedString("Operation failed", comment: "")
+        }
+    }
+}
+
 @Observable
 class LocationManager: NSObject, CLLocationManagerDelegate {
     let manager = CLLocationManager()
     static let shared = LocationManager()
+    var error: LocationError? = nil
     
     var region: MKCoordinateRegion = MKCoordinateRegion()
     
@@ -40,13 +67,26 @@ extension LocationManager {
             case .authorizedAlways, .authorizedWhenInUse:
                 manager.requestLocation()
             case .denied:
-                print("Denied")
+                error = .authorizationDenied
             case .restricted:
-                print("Restricted")
+                error = .authorizationRestricted
             @unknown default:
                 break
         }
     }
     
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: any Error) {}
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: any Error) {
+        if let clError = error as? CLError {
+            switch clError.code {
+                case .locationUnknown:
+                    self.error = .unknownLocation
+                case .denied:
+                    self.error = .accessDenied
+                case .network:
+                    self.error = .network
+                default:
+                    self.error = .operationFailed
+            }
+        }
+    }
 }

@@ -31,7 +31,6 @@ struct CloseToMeView: View {
                         .interactiveDismissDisabled()
                         .presentationBackgroundInteraction(.enabled(upThrough: .medium))
                 })
-
         }
     }
 }
