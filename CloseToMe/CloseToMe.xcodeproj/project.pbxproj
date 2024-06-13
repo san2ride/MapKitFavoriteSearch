@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F70750672C1B7431008664B8 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F70750662C1B7431008664B8 /* LocationManager.swift */; };
 		F760F23F2C1A30860068E6EA /* CloseToMeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F760F23E2C1A30860068E6EA /* CloseToMeApp.swift */; };
 		F760F2432C1A30880068E6EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F760F2422C1A30880068E6EA /* Assets.xcassets */; };
 		F760F2462C1A30880068E6EA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F760F2452C1A30880068E6EA /* Preview Assets.xcassets */; };
@@ -14,6 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F70750662C1B7431008664B8 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		F760F23B2C1A30860068E6EA /* CloseToMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CloseToMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F760F23E2C1A30860068E6EA /* CloseToMeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseToMeApp.swift; sourceTree = "<group>"; };
 		F760F2422C1A30880068E6EA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -32,6 +34,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F70750682C1B7437008664B8 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				F70750662C1B7431008664B8 /* LocationManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
 		F760F2322C1A30860068E6EA = {
 			isa = PBXGroup;
 			children = (
@@ -51,6 +61,7 @@
 		F760F23D2C1A30860068E6EA /* CloseToMe */ = {
 			isa = PBXGroup;
 			children = (
+				F70750682C1B7437008664B8 /* Managers */,
 				F760F24C2C1A50A80068E6EA /* CloseToMeView.swift */,
 				F760F2422C1A30880068E6EA /* Assets.xcassets */,
 				F760F2442C1A30880068E6EA /* Preview Content */,
@@ -139,6 +150,7 @@
 			files = (
 				F760F24D2C1A50A80068E6EA /* CloseToMeView.swift in Sources */,
 				F760F23F2C1A30860068E6EA /* CloseToMeApp.swift in Sources */,
+				F70750672C1B7431008664B8 /* LocationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
