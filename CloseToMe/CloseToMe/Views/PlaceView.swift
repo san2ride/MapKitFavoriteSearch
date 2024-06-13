@@ -28,6 +28,6 @@ struct PlaceView: View {
 
 
 #Preview {
-    PlaceView(mapItem: <#MKMapItem#>)
+    PlaceView(mapItem: PreviewData.apple)
 }
 
