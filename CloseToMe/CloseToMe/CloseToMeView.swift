@@ -44,15 +44,9 @@ struct CloseToMeView: View {
             })
             .sheet(isPresented: .constant(true), content: {
                 VStack {
-                    TextField("Search", text: $query)
-                        .textFieldStyle(.roundedBorder)
-                        .padding()
-                        .onSubmit {
-                           isSearching = true
-                        }
-                    List(mapItems, id: \.self) { mapItem in
-                        PlaceView(mapItem: mapItem)
-                    }
+                    SearchBarView(search: $query, isSearching: $isSearching)
+                    PlaceListView(mapItems: mapItems)
+                    
                     Spacer()
                 }
                 .presentationDetents([.fraction(0.15), .medium, .large], selection: $selectedDetent)
