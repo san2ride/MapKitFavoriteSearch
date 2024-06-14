@@ -32,7 +32,7 @@ struct PlaceView: View {
             Text(address)
                 .frame(maxWidth: .infinity, alignment: .leading)
             if let distance {
-                //Text(distance, formatter: MeasurementFormatter.distance)
+                Text(distance, formatter: MeasurementFormatter.distance)
             }
         }
     }
