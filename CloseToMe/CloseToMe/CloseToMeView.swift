@@ -8,6 +8,11 @@
 import SwiftUI
 import MapKit
 
+enum DisplayMode {
+    case list
+    case detail
+}
+
 struct CloseToMeView: View {
     
     @State private var query: String = "Strip club"
@@ -17,6 +22,8 @@ struct CloseToMeView: View {
     @State private var isSearching: Bool = false
     @State private var mapItems: [MKMapItem] = []
     @State private var visibleRegion: MKCoordinateRegion?
+    @State private var selectedMapItem: MKMapItem?
+    @State private var displayMode: DisplayMode = .list
     
     private func search() async {
         do {
@@ -33,7 +40,7 @@ struct CloseToMeView: View {
     
     var body: some View {
         ZStack {
-            Map(position: $position) {
+            Map(position: $position, selection: $selectedMapItem) {
                 ForEach(mapItems, id: \.self) { mapItem in
                     Marker(item: mapItem)
                 }
@@ -44,6 +51,13 @@ struct CloseToMeView: View {
             })
             .sheet(isPresented: .constant(true), content: {
                 VStack {
+                    switch displayMode {
+                        case .list:
+                            SearchBarView(search: $query, isSearching: $isSearching)
+                            PlaceListView(mapItems: mapItems)
+                        case .detail:
+                            Text("DETAIL")
+                    }
                     SearchBarView(search: $query, isSearching: $isSearching)
                     PlaceListView(mapItems: mapItems)
                     
