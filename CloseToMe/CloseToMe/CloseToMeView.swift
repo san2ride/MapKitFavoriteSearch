@@ -56,7 +56,8 @@ struct CloseToMeView: View {
                             SearchBarView(search: $query, isSearching: $isSearching)
                             PlaceListView(mapItems: mapItems)
                         case .detail:
-                            Text("DETAIL")
+                            SelectedPlaceDetailView(mapItem: $selectedMapItem)
+                                .padding()
                     }
                     SearchBarView(search: $query, isSearching: $isSearching)
                     PlaceListView(mapItems: mapItems)
@@ -69,6 +70,13 @@ struct CloseToMeView: View {
                 .presentationBackgroundInteraction(.enabled(upThrough: .medium))
             })
         }
+        .onChange(of: selectedMapItem, {
+            if selectedMapItem != nil {
+                displayMode = .detail
+            } else {
+                displayMode = .list
+            }
+        })
         .onMapCameraChange { context in
             visibleRegion = context.region
         }
