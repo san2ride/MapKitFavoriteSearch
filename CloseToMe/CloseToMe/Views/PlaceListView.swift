@@ -10,6 +10,7 @@ import MapKit
 
 struct PlaceListView: View {
     let mapItems: [MKMapItem]
+    @Binding var selectedMapItem: MKMapItem?
     
     private var sortedItems: [MKMapItem] {
         
@@ -30,14 +31,18 @@ struct PlaceListView: View {
     }
     
     var body: some View {
-        List(sortedItems, id: \.self) { mapItem in
+        List(sortedItems, id: \.self, selection: $selectedMapItem) { mapItem in
             PlaceView(mapItem: mapItem)
         }
     }
 }
 
-/*
+
 #Preview {
-    PlaceListView(mapItems: [PreviewData.apple])
+    let apple = Binding<MKMapItem?>(
+        get: { PreviewData.apple },
+        set: { _ in }
+        )
+    return PlaceListView(mapItems: [PreviewData.apple], selectedMapItem: apple)
 }
-*/
+

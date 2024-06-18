@@ -13,7 +13,7 @@ struct SearchBarView: View {
     @Binding var isSearching: Bool
     
     var body: some View {
-        VStack {
+        VStack(spacing: -10) {
             TextField("Search", text: $search)
                 .textFieldStyle(.roundedBorder)
                 .padding()
@@ -25,7 +25,7 @@ struct SearchBarView: View {
                 isSearching = true
             }
             .padding([.leading], 10)
-            .padding([.bottom], 5)
+            .padding([.bottom], 20)
         }
     }
 }

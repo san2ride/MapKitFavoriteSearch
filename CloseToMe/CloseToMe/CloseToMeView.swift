@@ -47,20 +47,21 @@ struct CloseToMeView: View {
                 UserAnnotation()
             }
             .onChange(of: locationManager.region, {
-                position = .region(locationManager.region)
+                withAnimation {
+                    position = .region(locationManager.region)
+                }
             })
             .sheet(isPresented: .constant(true), content: {
                 VStack {
+                    
                     switch displayMode {
                         case .list:
                             SearchBarView(search: $query, isSearching: $isSearching)
-                            PlaceListView(mapItems: mapItems)
+                            PlaceListView(mapItems: mapItems, selectedMapItem: $selectedMapItem)
                         case .detail:
                             SelectedPlaceDetailView(mapItem: $selectedMapItem)
                                 .padding()
                     }
-                    SearchBarView(search: $query, isSearching: $isSearching)
-                    PlaceListView(mapItems: mapItems)
                     
                     Spacer()
                 }
