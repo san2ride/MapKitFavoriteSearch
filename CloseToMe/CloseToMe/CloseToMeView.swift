@@ -15,7 +15,7 @@ enum DisplayMode {
 
 struct CloseToMeView: View {
     
-    @State private var query: String = "Strip club"
+    @State private var query: String = "Hotel"
     @State private var selectedDetent: PresentationDetent = .fraction(0.15)
     @State private var locationManager = LocationManager.shared
     @State private var position: MapCameraPosition = .userLocation(fallback: .automatic)
@@ -24,6 +24,7 @@ struct CloseToMeView: View {
     @State private var visibleRegion: MKCoordinateRegion?
     @State private var selectedMapItem: MKMapItem?
     @State private var displayMode: DisplayMode = .list
+    @State private var lookAroudScene: MKLookAroundScene?
     
     private func search() async {
         do {
@@ -61,6 +62,15 @@ struct CloseToMeView: View {
                         case .detail:
                             SelectedPlaceDetailView(mapItem: $selectedMapItem)
                                 .padding()
+                            LookAroundPreview(initialScene: lookAroudScene)
+                            
+                                .task(id: selectedMapItem) {
+                                    lookAroudScene = nil
+                                    if let selectedMapItem {
+                                        let request = MKLookAroundSceneRequest(mapItem: selectedMapItem)
+                                        lookAroudScene = try? await request.scene
+                                    }
+                                }
                     }
                     
                     Spacer()
