@@ -80,6 +80,10 @@ struct CloseToMeView: View {
                             SelectedPlaceDetailView(mapItem: $selectedMapItem)
                                 .padding()
                             if selectedDetent == .medium || selectedDetent == .large {
+                                if let selectedMapItem {
+                                    ActionButtonsView(mapItem: selectedMapItem)
+
+                                }
                                 LookAroundPreview(initialScene: lookAroudScene)
                             }
                     }
