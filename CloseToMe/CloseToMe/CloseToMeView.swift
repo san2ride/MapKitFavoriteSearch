@@ -15,7 +15,7 @@ enum DisplayMode {
 
 struct CloseToMeView: View {
     
-    @State private var query: String = "Hotel"
+    @State private var query: String = ""
     @State private var selectedDetent: PresentationDetent = .fraction(0.15)
     @State private var locationManager = LocationManager.shared
     @State private var position: MapCameraPosition = .userLocation(fallback: .automatic)
