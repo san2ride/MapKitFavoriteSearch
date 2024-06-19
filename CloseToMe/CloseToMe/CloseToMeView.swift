@@ -79,7 +79,9 @@ struct CloseToMeView: View {
                         case .detail:
                             SelectedPlaceDetailView(mapItem: $selectedMapItem)
                                 .padding()
-                            LookAroundPreview(initialScene: lookAroudScene)
+                            if selectedDetent == .medium || selectedDetent == .large {
+                                LookAroundPreview(initialScene: lookAroudScene)
+                            }
                     }
                     
                     Spacer()
