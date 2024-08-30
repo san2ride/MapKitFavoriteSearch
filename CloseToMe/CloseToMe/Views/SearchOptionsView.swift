@@ -9,7 +9,17 @@ import SwiftUI
 
 struct SearchOptionsView: View {
     
-    let searchOptions = ["Restaurants": "fork.knife", "Hotels": "bed.double.fill", "Coffee": "cup.and.saucer.fill", "Gas": "fuelpump.fill"]
+    let searchOptions = [
+        "Stadiums and Arenas":
+        "trophy.fill", "Pub":
+        "figure.dress.line.vertical.figure",
+        "Cocktail Bar": "wineglass",
+        "Restaurants": "fork.knife",
+        "Hotels": "bed.double.fill",
+        "Coffee": "cup.and.saucer.fill",
+        "Gas": "fuelpump.fill",
+        "Nightclub": "bolt.circle.fill"
+    ]
     
     let onSelected: (String) -> Void
     
